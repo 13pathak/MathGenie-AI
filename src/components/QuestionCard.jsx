@@ -24,9 +24,17 @@ const QuestionCard = ({ question, index, forceOpen }) => {
                         Q{index + 1}
                     </span>
                     <div className="flex-1">
-                        <h3 className="text-lg font-medium text-slate-800 leading-relaxed">
-                            {question.question}
-                        </h3>
+                        <div className="text-lg font-medium text-slate-800 leading-relaxed">
+                            <ReactMarkdown
+                                remarkPlugins={[remarkMath]}
+                                rehypePlugins={[rehypeKatex]}
+                                components={{
+                                    p: ({ node, ...props }) => <p className="mb-0" {...props} />
+                                }}
+                            >
+                                {question.question}
+                            </ReactMarkdown>
+                        </div>
                     </div>
                 </div>
             </div>
