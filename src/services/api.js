@@ -18,6 +18,11 @@ export const generateQuiz = async (config, params) => {
     - 'logic': string (step-by-step solution using Markdown and LaTeX for math)
 
     Ensure the LaTeX is formatted correctly for 'react-markdown' and 'rehype-katex' (e.g., $...$ for inline, $$...$$ for block).
+    
+    IMPORTANT CRITICAL INSTRUCTION:
+    When using dollar signs for CURRENCY (e.g. $100, $20), you MUST escape them as '\\$' (e.g. '\\$100', '\\$20'). 
+    NEVER use unescaped '$' for currency, as it will be interpreted as a LaTeX math delimiter.
+    Only use unescaped '$' for actual LaTeX math expressions (e.g. $x + y$).
   `;
 
     const isGemini = baseUrl.includes('googleapis.com');
